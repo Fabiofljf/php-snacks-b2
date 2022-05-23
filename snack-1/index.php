@@ -2,7 +2,7 @@
     Ad ogni refresh della pagina visualizzare una pubblicità a schermo, tenendo conto che possono essere sorteggiate solo quelle is_active true.
  -->
 
- <?php
+<?php
 
 $ads = [
     [
@@ -33,26 +33,50 @@ $ads = [
 
 ];
 
+// var_dump($ads);
+
+
+$newArray = [];
+
+foreach ($ads as $array) {
+    // var_dump($array); // - Array with keys.
+    foreach ($array as $key => $value) {
+        // var_dump($key); // - Key of array.
+        // var_dump($value); // - Value of array.
+        if($value == 'true'){
+            $newArray [] = $array;
+        };
+    } 
+    
+}
+var_dump($newArray);
+
+$arrayRandom = (array_rand($newArray, 2));
+
+var_dump($arrayRandom)
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pubblicità</title>
 </head>
-<body>
-    
-    <?php foreach($ads as $ad) : ?>
-            <?php foreach($ad as $info) : ?>
-                <div <?php "$info['is_active'] ? true)" ?>
 
-                </div>
-                <?php $random = array_rand($info, 1); var_dump($random); ?>
-            <?php endforeach; ?>
+<body>
+
+    <?php foreach ($ads as $array ) : ?>
+        <?php foreach ($array as $key => $value) : ?>
+            <div>
+                <?php echo $arrayRandom ?>
+            </div>
+        <?php endforeach; ?>
     <?php endforeach; ?>
 
 </body>
+
 </html>
